@@ -1,5 +1,7 @@
+using PrivateImageCloud.Api.Common.Mappers.Authentication;
 using PrivateImageCloud.Api.Features.Authentication.Commands.Authentication;
 using PrivateImageCloud.Api.Features.Authentication.Common;
+using PrivateImageCloud.Api.Features.Authentication.Queries.Login;
 using PrivateImageCloud.Contracts.Authentication;
 
 namespace PrivateImageCloud.Api.Controllers;
@@ -9,10 +11,12 @@ namespace PrivateImageCloud.Api.Controllers;
 public class AuthenticationController : ApiController
 {
   private readonly ISender mediator;
+  private readonly IAuthenticationMapper authenticationMapper;
 
-  public AuthenticationController(ISender mediator)
+  public AuthenticationController(ISender mediator, IAuthenticationMapper authenticationMapper)
   {
     this.mediator = mediator;
+    this.authenticationMapper = authenticationMapper;
   }
 
   [HttpPost]
@@ -23,7 +27,20 @@ public class AuthenticationController : ApiController
     ErrorOr<AuthenticationResult> authenticationResult = await mediator.Send(authenticationCommand);
 
     return authenticationResult.Match(
-      result => Ok(result),
+      result => Ok(authenticationMapper.MapResultToResponse(result)),
+      errors => Problem(errors)
+    );
+  }
+
+  [HttpPost("login")]
+  public async Task<IActionResult> Login(LoginRequest request)
+  {
+    var loginCommand = new LoginCommand(request.Id);
+
+    ErrorOr<AuthenticationResult> authenticationResult = await mediator.Send(loginCommand);
+
+    return authenticationResult.Match(
+      result => Ok(authenticationMapper.MapResultToResponse(result)),
       errors => Problem(errors)
     );
   }

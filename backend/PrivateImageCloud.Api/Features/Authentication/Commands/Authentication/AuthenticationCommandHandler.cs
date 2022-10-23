@@ -5,7 +5,6 @@ using PrivateImageCloud.Api.Common.Persistence;
 using PrivateImageCloud.Api.Common.Services.DateTimeServices;
 using PrivateImageCloud.Api.Common.Settings;
 using PrivateImageCloud.Api.Features.Authentication.Common;
-using PrivateImageCloud.Entities;
 
 namespace PrivateImageCloud.Api.Features.Authentication.Commands.Authentication;
 
@@ -77,6 +76,8 @@ public class AuthenticationCommandHandler : IRequestHandler<AuthenticationComman
       user.Roles.Add(adminRole);
       user.Status = "Active";
       user.Updated = dateTimeService.CEST;
+
+      adminRole.Creator = user;
 
       var userToken = jwtGenerator.GenerateUserToken(user);
       await dataContext.SaveChangesAsync(cancellationToken);

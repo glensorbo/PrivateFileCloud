@@ -2,5 +2,5 @@ POST {{host}}/auth
 Content-Type: application/json
 
 {
-  "code": "4/0ARtbsJrpFlV5ox1zBED6SOxKNi_KNsHK6SP1XOlko3Y8_ccQC_RtRSm89TexhR9EspqKHA"
+  "code": ""
 }

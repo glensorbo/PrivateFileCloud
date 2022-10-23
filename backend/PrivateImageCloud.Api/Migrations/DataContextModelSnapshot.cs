@@ -115,20 +115,20 @@ namespace PrivateImageCloud.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b510f65c-75ff-43f8-99ce-07d0a136613f"),
-                            Created = new DateTime(2022, 10, 23, 15, 19, 57, 733, DateTimeKind.Unspecified).AddTicks(7866),
+                            Id = new Guid("c9c2d988-3972-420d-83c6-cb29a2c3841a"),
+                            Created = new DateTime(2022, 10, 23, 21, 37, 23, 979, DateTimeKind.Unspecified).AddTicks(262),
                             Name = "Admin"
                         },
                         new
                         {
-                            Id = new Guid("7d1ce256-e17c-4274-966d-cee91a16029e"),
-                            Created = new DateTime(2022, 10, 23, 15, 19, 57, 733, DateTimeKind.Unspecified).AddTicks(7866),
+                            Id = new Guid("016ccff7-dcee-448d-b862-ec2c704ea2e6"),
+                            Created = new DateTime(2022, 10, 23, 21, 37, 23, 979, DateTimeKind.Unspecified).AddTicks(262),
                             Name = "Registering"
                         },
                         new
                         {
-                            Id = new Guid("0d33754c-b9db-496f-bf65-c0692c4b8100"),
-                            Created = new DateTime(2022, 10, 23, 15, 19, 57, 733, DateTimeKind.Unspecified).AddTicks(7866),
+                            Id = new Guid("09d2e6f5-0bcc-4e67-908b-e39d961192b5"),
+                            Created = new DateTime(2022, 10, 23, 21, 37, 23, 979, DateTimeKind.Unspecified).AddTicks(262),
                             Name = "User"
                         });
                 });
@@ -181,12 +181,12 @@ namespace PrivateImageCloud.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("fd30a835-eb49-48be-bae3-ee9d94af07e2"),
+                            Id = new Guid("ca013944-f74b-4869-ac2c-8815c6c27e0d"),
                             Email = "glensorbo@gmail.com",
                             FirstName = "Glen",
-                            Invited = new DateTime(2022, 10, 23, 15, 19, 57, 733, DateTimeKind.Unspecified).AddTicks(7866),
+                            Invited = new DateTime(2022, 10, 23, 21, 37, 23, 979, DateTimeKind.Unspecified).AddTicks(262),
                             LastName = "Sørbø",
-                            Registered = new DateTime(2022, 10, 23, 15, 19, 57, 733, DateTimeKind.Unspecified).AddTicks(7866),
+                            Registered = new DateTime(2022, 10, 23, 21, 37, 23, 979, DateTimeKind.Unspecified).AddTicks(262),
                             Status = "Admin"
                         });
                 });

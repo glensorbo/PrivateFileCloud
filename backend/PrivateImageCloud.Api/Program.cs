@@ -18,6 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 {
+  app.UseCors("any-domain");
   app.UseExceptionHandler("/error");
   app.UseHttpsRedirection();
   app.UseAuthorization();

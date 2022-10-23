@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IUser, IAuthenticationResponse } from './../../Interfaces';
 
 const initialState = {
   loading: true,
   isAuthenticated: false,
   isAdmin: false,
   isRegistering: false,
-  emailIsValid: false,
-  users: [],
-  user: null,
+  user: {} as IUser | null,
 };
 
 const authState = createSlice({
@@ -17,29 +16,24 @@ const authState = createSlice({
     setLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload;
     },
-    setIsRegistering(state, action: { payload: boolean; type: string }) {
+    setIsRegistering(state, action: PayloadAction<boolean>) {
       state.isRegistering = action.payload;
     },
-    setEmailIsValid(state, action: { payload: boolean; type: string }) {
-      state.emailIsValid = action.payload;
-    },
-    userLogin(state, action) {
+    login(state, action: PayloadAction<IAuthenticationResponse>) {
       state.isAuthenticated = true;
-      // state.emailIsValid = true;
-      // state.user = action.payload;
-      // if (
-      //   action.payload.roles.some((role: any) => role.name === 'Administrator')
-      // ) {
-      //   state.isAdmin = true;
-      // }
-      // localStorage.setItem('token', action.payload.token);
-      // localStorage.setItem('user', JSON.stringify(action.payload));
+      state.isRegistering = action.payload.isRegistering;
+      state.user = action.payload;
+      if (action.payload.roles.some((role: any) => role.name === 'Admin')) {
+        state.isAdmin = true;
+      }
+      localStorage.setItem('token', action.payload.token);
+      localStorage.setItem('user', JSON.stringify(action.payload));
+      state.loading = false;
     },
     logOut(state) {
-      state.isAuthenticated = false;
-      state.user = null;
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      state = initialState;
     },
   },
 });

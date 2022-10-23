@@ -1,5 +1,6 @@
 using System.Reflection;
 using PrivateImageCloud.Api.Common.Authentication;
+using PrivateImageCloud.Api.Common.Mappers;
 using PrivateImageCloud.Api.Common.Persistence;
 using PrivateImageCloud.Api.Common.Services;
 using PrivateImageCloud.Api.Common.Settings;
@@ -18,7 +19,13 @@ public static class DependencyInjection
 
     services.AddServices();
 
+    services.AddMappers();
+
     services.AddMediatR(Assembly.GetExecutingAssembly());
+
+    services.AddResponseCompression(options => options.EnableForHttps = true);
+
+    services.AddCors(policy => policy.AddPolicy("any-domain", build => build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader()));
 
     services.AddControllers();
 

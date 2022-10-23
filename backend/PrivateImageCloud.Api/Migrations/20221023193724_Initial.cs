@@ -127,15 +127,15 @@ namespace PrivateImageCloud.Api.Migrations
                 columns: new[] { "Id", "Created", "CreatorId", "EditorId", "Name", "Updated" },
                 values: new object[,]
                 {
-                    { new Guid("0d33754c-b9db-496f-bf65-c0692c4b8100"), new DateTime(2022, 10, 23, 15, 19, 57, 733, DateTimeKind.Unspecified).AddTicks(7866), null, null, "User", null },
-                    { new Guid("7d1ce256-e17c-4274-966d-cee91a16029e"), new DateTime(2022, 10, 23, 15, 19, 57, 733, DateTimeKind.Unspecified).AddTicks(7866), null, null, "Registering", null },
-                    { new Guid("b510f65c-75ff-43f8-99ce-07d0a136613f"), new DateTime(2022, 10, 23, 15, 19, 57, 733, DateTimeKind.Unspecified).AddTicks(7866), null, null, "Admin", null }
+                    { new Guid("016ccff7-dcee-448d-b862-ec2c704ea2e6"), new DateTime(2022, 10, 23, 21, 37, 23, 979, DateTimeKind.Unspecified).AddTicks(262), null, null, "Registering", null },
+                    { new Guid("09d2e6f5-0bcc-4e67-908b-e39d961192b5"), new DateTime(2022, 10, 23, 21, 37, 23, 979, DateTimeKind.Unspecified).AddTicks(262), null, null, "User", null },
+                    { new Guid("c9c2d988-3972-420d-83c6-cb29a2c3841a"), new DateTime(2022, 10, 23, 21, 37, 23, 979, DateTimeKind.Unspecified).AddTicks(262), null, null, "Admin", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "FirstName", "Invited", "LastName", "OriginalImageId", "Registered", "Status", "Updated", "WebpImageId" },
-                values: new object[] { new Guid("fd30a835-eb49-48be-bae3-ee9d94af07e2"), "glensorbo@gmail.com", "Glen", new DateTime(2022, 10, 23, 15, 19, 57, 733, DateTimeKind.Unspecified).AddTicks(7866), "Sørbø", null, new DateTime(2022, 10, 23, 15, 19, 57, 733, DateTimeKind.Unspecified).AddTicks(7866), "Admin", null, null });
+                values: new object[] { new Guid("ca013944-f74b-4869-ac2c-8815c6c27e0d"), "glensorbo@gmail.com", "Glen", new DateTime(2022, 10, 23, 21, 37, 23, 979, DateTimeKind.Unspecified).AddTicks(262), "Sørbø", null, new DateTime(2022, 10, 23, 21, 37, 23, 979, DateTimeKind.Unspecified).AddTicks(262), "Admin", null, null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Images_UploaderId",

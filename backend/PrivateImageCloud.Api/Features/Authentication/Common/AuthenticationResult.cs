@@ -3,7 +3,7 @@ using PrivateImageCloud.Entities;
 namespace PrivateImageCloud.Api.Features.Authentication.Common;
 
 public record AuthenticationResult(
-  User? User,
+  User User,
   string Token,
   bool IsLoggingIn,
   bool IsRegistering

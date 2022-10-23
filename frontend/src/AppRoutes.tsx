@@ -2,8 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { App } from './App';
 import { RequireAuth } from './Features/Auth';
-import { Dashboard, Login } from './Pages';
-import { AuthenticateSpinner } from './Pages/AuthenticateSpinner';
+import { Dashboard, Login, AuthenticateSpinner, Register } from './Pages';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -16,9 +15,10 @@ const AppRoutes: React.FC = () => {
           </RequireAuth>
         }
       >
-        <Route path='login' element={<Login />} />
         <Route index element={<Dashboard />} />
+        <Route path='login' element={<Login />} />
         <Route path='auth' element={<AuthenticateSpinner />} />
+        <Route path='register' element={<Register />} />
         {/* <Route path='admin'>
           <Route path='users' element={<UserList />}>
             <Route path='active' element={<ActiveUserlist />}>

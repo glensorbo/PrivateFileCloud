@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useStateDispatch, useStateSelector } from '../../../Hooks';
-import { Login } from '../../../Pages';
-import { AuthenticateSpinner } from '../../../Pages/AuthenticateSpinner';
+import { Login, Register, AuthenticateSpinner } from '../../../Pages';
+import { authActions } from '../../../Store/State';
 
 // import { UserService } from '../../../services';
 
 export const RequireAuth = ({ children }: { children: JSX.Element }) => {
-  const { isAuthenticated } = useStateSelector((state) => state.auth);
+  const { isAuthenticated, loading } = useStateSelector((state) => state.auth);
 
   const location = useLocation();
 
@@ -18,8 +18,30 @@ export const RequireAuth = ({ children }: { children: JSX.Element }) => {
     const user = localStorage.getItem('user');
     if (token && user) {
       // dispatch(UserService.getUser());
+      dispatch(authActions.setLoading(false));
     }
+    const timer = setTimeout(() => {
+      console.log('login');
+      dispatch(authActions.userLogin);
+      dispatch(authActions.setLoading(false));
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [dispatch]);
+
+  useEffect(() => {
+    console.log(loading);
+  }, [loading]);
+
+  if (loading) {
+    return <AuthenticateSpinner />;
+  }
+
+  if (!isAuthenticated && location.pathname === '/register') {
+    return <Register />;
+  }
 
   if (!isAuthenticated && location.pathname === '/login') {
     return <Login />;

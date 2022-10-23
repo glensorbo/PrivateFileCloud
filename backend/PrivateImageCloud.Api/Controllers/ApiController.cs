@@ -22,7 +22,19 @@ public class ApiController : ControllerBase
       return Problem();
     }
 
-    return Problem(errors[0]);
+    var firstError = errors[0];
+
+    if (firstError.Code == "Authentication.Unauthorized")
+    {
+      return Unauthorized();
+    }
+
+    if (firstError.Code == "Authentication.Forbidden")
+    {
+      return Forbid();
+    }
+
+    return Problem(firstError);
   }
 
   private IActionResult Problem(Error error)

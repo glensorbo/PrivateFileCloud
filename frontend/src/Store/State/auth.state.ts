@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
-  loading: false,
+  loading: true,
   isAuthenticated: false,
   isAdmin: false,
   isRegistering: false,
@@ -25,16 +25,15 @@ const authState = createSlice({
     },
     userLogin(state, action) {
       state.isAuthenticated = true;
-      state.emailIsValid = true;
-      state.user = action.payload;
-      if (
-        action.payload.roles.some((role: any) => role.name === 'Administrator')
-      ) {
-        state.isAdmin = true;
-      }
+      // state.emailIsValid = true;
+      // state.user = action.payload;
+      // if (
+      //   action.payload.roles.some((role: any) => role.name === 'Administrator')
+      // ) {
+      //   state.isAdmin = true;
+      // }
       // localStorage.setItem('token', action.payload.token);
       // localStorage.setItem('user', JSON.stringify(action.payload));
-      state.loading = false;
     },
     logOut(state) {
       state.isAuthenticated = false;

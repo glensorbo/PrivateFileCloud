@@ -4,22 +4,35 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>9bf4550f-0d3b-4005-8dd6-9ee25501e0a8</UserSecretsId>
+    <UserSecretsId>5860a4a8-479e-4d69-833e-64d4d018ee36</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PrivateImageCloud.Contracts\PrivateImageCloud.Contracts.csproj" />
-    <ProjectReference Include="..\PrivateImageCloud.Application\PrivateImageCloud.Application.csproj" />
-    <ProjectReference Include="..\PrivateImageCloud.Infrastructure\PrivateImageCloud.Infrastructure.csproj" />
+    <ProjectReference Include="..\PrivateImageCloud.Entities\PrivateImageCloud.Entities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="ErrorOr" Version="1.0.1" />
     <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="SendGrid" Version="9.28.1" />
+    <PackageReference Include="SkiaSharp" Version="2.88.3" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.24.0" />
+    <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

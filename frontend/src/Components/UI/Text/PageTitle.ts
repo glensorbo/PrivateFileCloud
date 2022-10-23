@@ -6,5 +6,5 @@ export const PageTitle = styled.h1`
   text-align: center;
   color: ${theme.colors.primary};
   font-size: 2rem;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
 `;

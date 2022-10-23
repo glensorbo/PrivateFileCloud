@@ -10,7 +10,7 @@ const googleState = process.env.REACT_APP_GOOGLE_STATE;
 export const AuthenticateSpinner: FC = () => {
   const location = useLocation();
 
-  const { isAuthenticated, isRegistering, emailIsValid } = useStateSelector(
+  const { isAuthenticated, isRegistering } = useStateSelector(
     (state) => state.auth
   );
   const dispatch = useStateDispatch();
@@ -27,22 +27,12 @@ export const AuthenticateSpinner: FC = () => {
     }
   }, [location, dispatch]);
 
-  useEffect(() => {
-    location.state = 'Have loaded';
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   if (isAuthenticated) {
     return <Navigate replace to='/' />;
   }
 
   if (isRegistering) {
     return <Navigate replace to='/personal-info-google' />;
-  }
-
-  if (!emailIsValid && location.state === 'Have Loaded') {
-    location.state = null;
-    return <Navigate replace to='/email-confirmation' />;
   }
 
   return (

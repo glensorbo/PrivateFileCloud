@@ -2,11 +2,11 @@ import { createGlobalStyle } from 'styled-components';
 
 export const theme = {
   colors: {
-    primary: 'black',
+    primary: '#ed6c02',
   },
   fontFamily: {
-    body: 'Roboto, sans-serif',
-    header: '',
+    body: 'Roboto',
+    header: 'Roboto',
   },
   fontSize: {
     body: '12px',

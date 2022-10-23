@@ -3,7 +3,7 @@ import { device } from '../../../GlobalStyles';
 
 export const SectionContainer = styled.section`
   width: 85%;
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;

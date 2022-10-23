@@ -3,15 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateImageCloud.Api", "PrivateImageCloud.Api\PrivateImageCloud.Api.csproj", "{5DCC1FBD-1B73-4C8D-AE95-DC44A67D41D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateImageCloud.Api", "PrivateImageCloud.Api\PrivateImageCloud.Api.csproj", "{649C9779-1BB1-463E-91BF-DEA381F8F4E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateImageCloud.Application", "PrivateImageCloud.Application\PrivateImageCloud.Application.csproj", "{8853AD2E-27D9-4DE4-8E56-805046976E20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateImageCloud.Contracts", "PrivateImageCloud.Contracts\PrivateImageCloud.Contracts.csproj", "{540CA215-8BC9-410A-882C-8650F06A06B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateImageCloud.Contracts", "PrivateImageCloud.Contracts\PrivateImageCloud.Contracts.csproj", "{B3ED06C5-7304-4AC9-B88B-B7E1CDA1938C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateImageCloud.Domain", "PrivateImageCloud.Domain\PrivateImageCloud.Domain.csproj", "{2C9BB280-967E-4E19-8749-99A53B578EE7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateImageCloud.Infrastructure", "PrivateImageCloud.Infrastructure\PrivateImageCloud.Infrastructure.csproj", "{1CBFF399-9A65-4170-BCB0-3C303BE13FDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateImageCloud.Entities", "PrivateImageCloud.Entities\PrivateImageCloud.Entities.csproj", "{E8D409DD-C929-459E-A100-E0860128381C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,25 +18,17 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5DCC1FBD-1B73-4C8D-AE95-DC44A67D41D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DCC1FBD-1B73-4C8D-AE95-DC44A67D41D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DCC1FBD-1B73-4C8D-AE95-DC44A67D41D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DCC1FBD-1B73-4C8D-AE95-DC44A67D41D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8853AD2E-27D9-4DE4-8E56-805046976E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8853AD2E-27D9-4DE4-8E56-805046976E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8853AD2E-27D9-4DE4-8E56-805046976E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8853AD2E-27D9-4DE4-8E56-805046976E20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3ED06C5-7304-4AC9-B88B-B7E1CDA1938C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3ED06C5-7304-4AC9-B88B-B7E1CDA1938C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3ED06C5-7304-4AC9-B88B-B7E1CDA1938C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3ED06C5-7304-4AC9-B88B-B7E1CDA1938C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C9BB280-967E-4E19-8749-99A53B578EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C9BB280-967E-4E19-8749-99A53B578EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C9BB280-967E-4E19-8749-99A53B578EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C9BB280-967E-4E19-8749-99A53B578EE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CBFF399-9A65-4170-BCB0-3C303BE13FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CBFF399-9A65-4170-BCB0-3C303BE13FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CBFF399-9A65-4170-BCB0-3C303BE13FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CBFF399-9A65-4170-BCB0-3C303BE13FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{649C9779-1BB1-463E-91BF-DEA381F8F4E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{649C9779-1BB1-463E-91BF-DEA381F8F4E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{649C9779-1BB1-463E-91BF-DEA381F8F4E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{649C9779-1BB1-463E-91BF-DEA381F8F4E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540CA215-8BC9-410A-882C-8650F06A06B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540CA215-8BC9-410A-882C-8650F06A06B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540CA215-8BC9-410A-882C-8650F06A06B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540CA215-8BC9-410A-882C-8650F06A06B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8D409DD-C929-459E-A100-E0860128381C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8D409DD-C929-459E-A100-E0860128381C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8D409DD-C929-459E-A100-E0860128381C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8D409DD-C929-459E-A100-E0860128381C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

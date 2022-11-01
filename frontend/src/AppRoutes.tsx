@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { App } from './App';
 import { RequireAuth } from './Features/Auth';
-import { Dashboard, Login, AuthenticationSpinner, Register } from './Pages';
+import { Home, Login, AuthenticationSpinner, Register } from './Pages';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const AppRoutes: React.FC = () => {
           </RequireAuth>
         }
       >
-        <Route index element={<Dashboard />} />
+        <Route index element={<Home />} />
         <Route path='login' element={<Login />} />
         <Route path='auth' element={<AuthenticationSpinner />} />
         <Route path='register' element={<Register />} />

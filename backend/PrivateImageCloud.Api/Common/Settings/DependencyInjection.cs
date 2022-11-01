@@ -7,7 +7,7 @@ public static class DependencyInjection
     ConfigurationManager configuration)
 
   {
-    // AddKeyVaultSettings(services, configuration);
+    AddKeyVaultSettings(services, configuration);
     AddJwtSettings(services, configuration);
     AddGoogleAuthSettings(services, configuration);
     AddSendGridSettings(services, configuration);
@@ -15,14 +15,19 @@ public static class DependencyInjection
     return services;
   }
 
-  // private static void AddKeyVaultSettings(IServiceCollection services, ConfigurationManager configuration)
-  // {
-  //   var keyVaultSettings = new KeyVaultSettings();
+  private static void AddKeyVaultSettings(IServiceCollection services, ConfigurationManager configuration)
+  {
+    var keyVaultSettings = new KeyVaultSettings();
 
-  //   configuration.Bind(KeyVaultSettings.SectionName, keyVaultSettings);
+    configuration.Bind(KeyVaultSettings.SectionName, keyVaultSettings);
 
-  //   services.AddSingleton(Options.Create(keyVaultSettings));
-  // }
+    if (string.IsNullOrEmpty(keyVaultSettings.KeyVaultUri))
+    {
+      keyVaultSettings.KeyVaultUri = Environment.GetEnvironmentVariable("KeyVaultUri")!;
+    }
+
+    services.AddSingleton(Options.Create(keyVaultSettings));
+  }
 
   private static void AddSendGridSettings(IServiceCollection services, ConfigurationManager configuration)
   {

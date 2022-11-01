@@ -1,11 +1,10 @@
 import { FC, useEffect } from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
-import { CircularProgress } from '@mui/material';
 
 import { useStateDispatch, useStateSelector } from '../Hooks';
-import { PageContainer } from '../Components/UI';
 import { authServices } from '../Features/Auth/Services/auth.services';
 import { authActions } from '../Store/State';
+import { Spinner } from '../Components/UI';
 
 const googleState = process.env.REACT_APP_GOOGLE_STATE;
 
@@ -52,13 +51,9 @@ export const AuthenticationSpinner: FC = () => {
     return <Navigate replace to='/' />;
   }
 
-  // if (isRegistering) {
-  //   return <Navigate replace to='/personal-info-google' />;
-  // }
-
   return (
-    <PageContainer>
-      <CircularProgress color='primary' size={80} />
-    </PageContainer>
+    <div className='h-screen w-screen bg-white dark:bg-dark-bg-primary'>
+      <Spinner className='h-20 w-20 border-t-4' />
+    </div>
   );
 };

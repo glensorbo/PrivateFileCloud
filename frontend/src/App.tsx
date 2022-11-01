@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
 import Moment from 'react-moment';
-import { PageContainer } from './Components/UI';
 
 export const App = () => {
   Moment.globalLocale = 'no';
@@ -10,8 +9,8 @@ export const App = () => {
   console.log('App Rendered');
 
   return (
-    <PageContainer>
+    <main className='min-h-screen min-w-full bg-white dark:bg-dark-bg-primary dark:text-dark-text-primary'>
       <Outlet />
-    </PageContainer>
+    </main>
   );
 };

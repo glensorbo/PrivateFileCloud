@@ -1,35 +1,31 @@
-import { Routes, Route } from 'react-router-dom';
-
-import { App } from './App';
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
 import { RequireAuth } from './Features/Auth';
-import { Home, Login, AuthenticationSpinner, Register } from './Pages';
 
-const AppRoutes: React.FC = () => {
-  return (
-    <Routes>
+import { Home, Login, Auth, Register, PageLayout } from './Pages';
+
+export const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route
+      path='/'
+      element={<PageLayout />}
+      errorElement={<div>ErrorElement...</div>}
+    >
       <Route
-        path='/'
+        index
         element={
           <RequireAuth>
-            <App />
+            <Home />
           </RequireAuth>
         }
-      >
-        <Route index element={<Home />} />
-        <Route path='login' element={<Login />} />
-        <Route path='auth' element={<AuthenticationSpinner />} />
-        <Route path='register' element={<Register />} />
-        {/* <Route path='admin'>
-          <Route path='users' element={<UserList />}>
-            <Route path='active' element={<ActiveUserlist />}>
-              <Route path=':userId' element={<ActiveUserlist />} />
-            </Route>
-          </Route>
-        </Route> */}
-        <Route path='*' element={<Login />} />
-      </Route>
-    </Routes>
-  );
-};
-
-export default AppRoutes;
+      />
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/auth' element={<Auth />} />
+      <Route path='*' element={<Login />} />
+    </Route>
+  )
+);

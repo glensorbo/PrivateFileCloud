@@ -31,15 +31,18 @@ export const Post = () => {
       </div>
       <div className='min-h-[2.5rem] px-4'>
         <p className='font-semibold text-sm pb-2'>23 liker</p>
-        <p className='font-semibold text-sm whitespace-nowrap pb-1 dark:text-dark-primary'>
-          Glen Sørbø
-        </p>
-        <p className='text-sm pb-2'>{postText}</p>
-        <button className='w-full text-left py-2 text-sm font-semibold text-gray-400'>
+        <div className='font-semibold text-sm  pb-1 dark:text-dark-primary'>
+          Glen Sørbø -{' '}
+          <p className='text-sm pb-2 inline dark:text-dark-text-primary'>
+            {postText}
+          </p>
+        </div>
+
+        <button className='w-full text-left py-2 text-sm font-semibold text-gray-400 hover:text-gray-50'>
           Se alle 11 kommentarer
         </button>
         <button className='flex items-center w-full py-2 text-left text-sm text-gray-400'>
-          <img src={Profile} alt='' className='h-10 w-10 rounded-full mr-2' />
+          <img src={Profile} alt='' className='h-8 w-8 rounded-full mr-2' />
           Legg til en kommentar...
         </button>
       </div>

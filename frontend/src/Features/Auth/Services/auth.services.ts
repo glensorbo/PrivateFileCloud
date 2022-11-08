@@ -10,7 +10,6 @@ export const authServices = {
           'auth',
           { code }
         );
-        console.log(data);
         dispatch(authActions.login(data));
       } catch (error) {
         console.log(error);

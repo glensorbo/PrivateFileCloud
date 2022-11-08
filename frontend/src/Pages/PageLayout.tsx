@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Spinner } from '../Components/UI';
+import { Header, SolidIcon, Spinner } from '../Components/UI';
 import { useStateDispatch, useStateSelector } from '../Hooks';
 import { authServices } from '../Services';
 import { authActions } from '../Store/State';
 
 export const PageLayout = () => {
-  const { loading } = useStateSelector((state) => state.auth);
+  const { loading, isAuthenticated } = useStateSelector((state) => state.auth);
 
   const dispatch = useStateDispatch();
 
@@ -32,13 +32,28 @@ export const PageLayout = () => {
   }, [dispatch]);
 
   return (
-    <main className='min-h-screen min-w-full bg-white dark:bg-dark-bg-primary dark:text-dark-text-primary'>
+    <>
       {loading && (
         <div className='h-screen w-screen bg-white dark:bg-dark-bg-primary'>
           <Spinner className='h-20 w-20 border-t-4' />
         </div>
       )}
-      {!loading && <Outlet />}
-    </main>
+      {!loading && (
+        <>
+          <Header />
+          <main className='min-h-screen min-w-full bg-white dark:bg-dark-bg-primary dark:text-dark-text-primary pt-16'>
+            <Outlet />
+            {isAuthenticated && (
+              <button className='fixed bottom-3 right-3 h-20 w-20 rounded-full'>
+                <SolidIcon
+                  icon='PlusCircleIcon'
+                  className='dark:text-dark-primary'
+                />
+              </button>
+            )}
+          </main>
+        </>
+      )}
+    </>
   );
 };

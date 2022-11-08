@@ -1,7 +1,8 @@
-import { OutlinedIcon, SolidIcon } from '../../../Components/UI';
+import { PostHeader } from './PostHeader';
+import { PostControls } from './PostControls';
 import { Carousel } from './Carousel';
+import { PostBody } from './PostBody';
 
-import Profile from '../Assets/profile_image.png';
 import Baby from '../Assets/baby.jpg';
 import Baby2 from '../Assets/baby2.jpg';
 
@@ -11,41 +12,25 @@ const postText =
 export const Post = () => {
   return (
     <article className='w-screen pb-3'>
-      <div className='flex items-center px-4 h-16'>
-        <img src={Profile} alt='' className='h-10 w-10 rounded-full' />
-        <p className='pl-3 dark:text-dark-text-primary font-semibold tracking-wide'>
-          Glen Sørbø
-        </p>
-      </div>
+      <PostHeader
+        image={{
+          src: 'https://avatars.dicebear.com/api/avataaars/glensorbo.svg',
+        }}
+        firstName='Glen'
+        lastName='Sørbø'
+      />
       <Carousel sources={[Baby, Baby2]} />
-      <div className='flex items-center pt-4 pb-1 px-4'>
-        <button>
-          <SolidIcon icon='HeartIcon' className='h-8 w-8 text-red-700' />
-        </button>
-        <button>
-          <OutlinedIcon
-            icon='ChatBubbleBottomCenterTextIcon'
-            className='h-8 w-8 ml-2'
-          />
-        </button>
-      </div>
-      <div className='min-h-[2.5rem] px-4'>
-        <p className='font-semibold text-sm pb-2'>23 liker</p>
-        <div className='font-semibold text-sm  pb-1 dark:text-dark-primary'>
-          Glen Sørbø -{' '}
-          <p className='text-sm pb-2 inline dark:text-dark-text-primary'>
-            {postText}
-          </p>
-        </div>
-
-        <button className='w-full text-left py-2 text-sm font-semibold text-gray-400 hover:text-gray-50'>
-          Se alle 11 kommentarer
-        </button>
-        <button className='flex items-center w-full py-2 text-left text-sm text-gray-400'>
-          <img src={Profile} alt='' className='h-8 w-8 rounded-full mr-2' />
-          Legg til en kommentar...
-        </button>
-      </div>
+      <PostControls liked={false} />
+      <PostBody
+        firstName='Glen'
+        lastName='Sørbø'
+        numberOfComments={10}
+        numberOfLikes={23}
+        postText={postText}
+        profileImage={{
+          src: 'https://avatars.dicebear.com/api/avataaars/loggedInUser.svg',
+        }}
+      />
     </article>
   );
 };

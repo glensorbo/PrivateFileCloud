@@ -1,9 +1,23 @@
-import Image from '../Assets/profile_image.png';
+interface Props {
+  seen: boolean;
+  image: {
+    src: string;
+    alt: string;
+  };
+}
 
-export const Story = () => {
+export const Story: React.FC<Props> = ({ seen, image }) => {
+  const border = !seen ? 'dark:border-dark-primary' : 'dark:border-gray-700';
+
   return (
-    <div className='rounded-full overflow-hidden w-20 border-2 border-dark-primary bg-dark-bg-elevated p-1 ml-2'>
-      <img src={Image} alt='' className='rounded-full' />
+    <div
+      className={`rounded-full overflow-hidden w-20 border-2 dark:bg-dark-bg-elevated p-1 ml-2 ${border}`}
+    >
+      <img
+        src={image.src}
+        alt={image.alt ?? 'Profile Image'}
+        className='rounded-full'
+      />
     </div>
   );
 };

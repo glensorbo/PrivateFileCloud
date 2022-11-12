@@ -6,7 +6,9 @@ import { authServices } from '../Services';
 import { authActions } from '../Store/State';
 
 export const PageLayout = () => {
-  const { loading, isAuthenticated } = useStateSelector((state) => state.auth);
+  const { loading, isAuthenticated, isDemoUser } = useStateSelector(
+    (state) => state.auth
+  );
 
   const dispatch = useStateDispatch();
 
@@ -40,17 +42,17 @@ export const PageLayout = () => {
       )}
       {!loading && (
         <>
-          <Header />
-          <main className='min-h-screen min-w-full bg-white dark:bg-dark-bg-primary dark:text-dark-text-primary pt-16'>
+          {isAuthenticated || isDemoUser ? <Header /> : null}
+          <main className='min-h-screen min-w-full bg-white dark:bg-dark-bg-primary dark:text-dark-text-primary'>
             <Outlet />
-            {isAuthenticated && (
+            {isAuthenticated || isDemoUser ? (
               <button className='fixed bottom-3 right-3 h-20 w-20 rounded-full'>
                 <SolidIcon
                   icon='PlusCircleIcon'
                   className='dark:text-dark-primary'
                 />
               </button>
-            )}
+            ) : null}
           </main>
         </>
       )}

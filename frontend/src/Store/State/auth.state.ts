@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUser, IAuthenticationResponse } from './../../Interfaces';
+import { IUser, IAuthenticationResponse, IRole } from './../../Interfaces';
 
 const initialState = {
   loading: true,
   isAuthenticated: false,
   isAdmin: false,
   isRegistering: false,
+  isDemoUser: false,
   user: {} as IUser | null,
 };
 
@@ -23,11 +24,18 @@ const authState = createSlice({
       state.isAuthenticated = true;
       state.isRegistering = action.payload.isRegistering;
       state.user = action.payload;
-      if (action.payload.roles.some((role: any) => role.name === 'Admin')) {
+      if (action.payload.roles.some((role: IRole) => role.name === 'Admin')) {
         state.isAdmin = true;
       }
-      localStorage.setItem('token', action.payload.token);
-      localStorage.setItem('user', JSON.stringify(action.payload));
+      if (action.payload.roles.some((role: IRole) => role.name === 'Demo')) {
+        state.isDemoUser = true;
+      }
+      if (action.payload.token) {
+        localStorage.setItem('token', action.payload.token);
+      }
+      if (action.payload.id !== 'demo') {
+        localStorage.setItem('user', JSON.stringify(action.payload));
+      }
       state.loading = false;
     },
     logOut(state) {

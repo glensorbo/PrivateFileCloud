@@ -6,11 +6,13 @@ interface Props {
 }
 
 export const RequireAuth: React.FC<Props> = ({ children }) => {
-  const { isAuthenticated } = useStateSelector((state) => state.auth);
+  const { isAuthenticated, isDemoUser } = useStateSelector(
+    (state) => state.auth
+  );
 
   const location = useLocation();
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated && !isDemoUser) {
     return <Navigate to='/login' state={{ from: location }} replace />;
   }
 

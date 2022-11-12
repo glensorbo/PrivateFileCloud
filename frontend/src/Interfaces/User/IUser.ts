@@ -5,7 +5,7 @@ export interface IUser {
   firstName: string;
   lastName: string;
   email: string;
-  invited: Date;
+  invited?: Date;
   registered?: Date;
   updated?: Date;
   status: string;
@@ -14,5 +14,5 @@ export interface IUser {
   webpProfileImage: string;
   isLoggingIn: boolean;
   isRegistering: boolean;
-  token: string;
+  token?: string;
 }

@@ -1,12 +1,17 @@
 import { Navigate } from 'react-router-dom';
 import { Button, Section } from '../Components/UI';
-import { useStateSelector } from '../Hooks';
+import { useStateDispatch, useStateSelector } from '../Hooks';
 import { fullGoogleAuthUrl } from '../Lib/GoogleApi';
+import { demoServices } from '../Services';
 
 export const Login = () => {
-  const { isAuthenticated } = useStateSelector((state) => state.auth);
+  const { isAuthenticated, isDemoUser } = useStateSelector(
+    (state) => state.auth
+  );
 
-  if (isAuthenticated) {
+  const dispatch = useStateDispatch();
+
+  if (isAuthenticated || isDemoUser) {
     return <Navigate to='/' replace />;
   }
 
@@ -19,6 +24,9 @@ export const Login = () => {
       <p>For å kunne opprette en konto må du være invitert først.</p>
       <Button onClick={() => window.location.replace(`${fullGoogleAuthUrl}`)}>
         Logg inn med Google
+      </Button>
+      <Button onClick={() => dispatch(demoServices.setIsDemoUser())}>
+        Se demo versjon
       </Button>
     </Section>
   );

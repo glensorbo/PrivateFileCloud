@@ -5,7 +5,7 @@ export interface IAuthenticationResponse {
   firstName: string;
   lastName: string;
   email: string;
-  invited: Date;
+  invited?: Date;
   registered?: Date;
   updated?: Date;
   status: string;
@@ -14,5 +14,5 @@ export interface IAuthenticationResponse {
   webpProfileImage: string;
   isLoggingIn: boolean;
   isRegistering: boolean;
-  token: string;
+  token?: string;
 }

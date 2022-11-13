@@ -1,4 +1,4 @@
-import { IRole } from './../Role/IRole';
+import { IRole } from './IRole';
 
 export interface IUser {
   id: string;

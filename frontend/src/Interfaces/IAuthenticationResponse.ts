@@ -1,4 +1,4 @@
-import { IRole } from '../Role';
+import { IRole } from './IRole';
 
 export interface IAuthenticationResponse {
   id: string;

@@ -10,11 +10,8 @@ export const Stories = () => {
     <div className='h-28 dark:bg-dark-bg-elevated flex items-center px-3 relative overflow-scroll border-b dark:border-b-gray-800 scrollbar scrollbar-none'>
       <AddStoryIcon
         image={{
-          src: user?.webpProfileImage
-            ? `${user?.webpProfileImage}`
-            : `${initialsUrl}/${user?.firstName} ${user?.lastName}.svg`,
-
-          alt: `${user?.firstName} ${user?.lastName}`,
+          src: `${user?.webpProfileImage}`,
+          alt: `${initialsUrl}/${user?.firstName} ${user?.lastName}.svg`,
         }}
       />
 

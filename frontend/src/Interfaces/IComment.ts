@@ -5,5 +5,5 @@ export interface IComment {
   text: string;
   created: string;
   likes: string[];
-  replies: IReply[];
+  replies: IReply[] | [];
 }

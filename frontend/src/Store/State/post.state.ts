@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { IPost } from './../../Interfaces';
+import { IComment, IPost } from './../../Interfaces';
 
 const initialState = {
   loading: true,
@@ -35,6 +35,19 @@ const postState = createSlice({
       state.posts[index].likes = state.posts[index].likes.filter(
         (id) => id !== action.payload.userId
       );
+    },
+    addComment(
+      state,
+      action: PayloadAction<{
+        comment: IComment;
+        postId: string;
+        userId: string;
+      }>
+    ) {
+      const index = state.posts.findIndex(
+        (post) => post.id === action.payload.postId
+      );
+      state.posts[index].comments.push(action.payload.comment);
     },
   },
 });

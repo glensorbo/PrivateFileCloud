@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { AppDispatch } from '../Store';
-import { postActions, authActions } from './../Store/State';
+import { postActions, authActions, uiActions } from './../Store/State';
 
 import { IAuthenticationResponse, IPost, IComment, IUser } from '../Interfaces';
 
@@ -23,10 +23,18 @@ export const demoServices = {
   likePostToggle(postId: string, userId: string, liked: boolean) {
     return async (dispatch: AppDispatch) => {
       if (!liked) {
+        dispatch(uiActions.toggleShowLikedHeart());
         dispatch(postActions.addLike({ postId, userId }));
+        await sleep(3000);
+        dispatch(uiActions.toggleShowLikedHeart());
       } else {
         dispatch(postActions.removeLike({ postId, userId }));
       }
+    };
+  },
+  addComment(comment: IComment, postId: string, userId: string) {
+    return async (dispatch: AppDispatch) => {
+      dispatch(postActions.addComment({ comment, postId, userId }));
     };
   },
 };

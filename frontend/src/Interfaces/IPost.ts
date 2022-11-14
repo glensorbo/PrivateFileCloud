@@ -6,6 +6,6 @@ export interface IPost {
   title: string;
   likes: string[];
   images: string[];
-  comments: [IComment] | [];
+  comments: [IComment];
   created: string;
 }

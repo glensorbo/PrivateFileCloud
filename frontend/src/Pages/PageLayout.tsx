@@ -10,6 +10,8 @@ export const PageLayout = () => {
     (state) => state.auth
   );
 
+  const { showAddPostButton } = useStateSelector((state) => state.ui);
+
   const dispatch = useStateDispatch();
 
   useEffect(() => {
@@ -45,7 +47,7 @@ export const PageLayout = () => {
           {isAuthenticated || isDemoUser ? <Header /> : null}
           <main className='min-h-screen min-w-full bg-white dark:bg-dark-bg-primary dark:text-dark-text-primary'>
             <Outlet />
-            {isAuthenticated || isDemoUser ? (
+            {(isAuthenticated || isDemoUser) && showAddPostButton ? (
               <button className='fixed bottom-3 right-3 h-20 w-20 rounded-full'>
                 <SolidIcon
                   icon='PlusCircleIcon'

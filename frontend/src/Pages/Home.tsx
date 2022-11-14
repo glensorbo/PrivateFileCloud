@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useStateDispatch, useStateSelector } from '../Hooks';
 import { demoServices } from '../Services';
 
-import { Post, Stories } from '../Features/Home';
+import { Post } from '../Features/Home';
 import { Spinner } from '../Components/UI';
 
 export const Home = () => {
@@ -17,7 +17,7 @@ export const Home = () => {
 
   return (
     <>
-      <Stories />
+      {/* <Stories /> */}
       {loading && (
         <div className='fixed top-0 left-0 h-screen w-screen'>
           <Spinner className='h-16 w-16 border-t-4' />

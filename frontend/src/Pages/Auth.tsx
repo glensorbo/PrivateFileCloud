@@ -10,6 +10,7 @@ export const Auth: React.FC = () => {
   const location = useLocation();
 
   const { isAuthenticated } = useStateSelector((state) => state.auth);
+  const { shouldNavigate } = useStateSelector((state) => state.ui);
   const dispatch = useStateDispatch();
 
   useEffect(() => {
@@ -19,10 +20,13 @@ export const Auth: React.FC = () => {
     const code = params.get('code');
 
     if (googleState === stateFromQuery && code) {
-      console.log('[AuthenticateSpinner] CODE: ', code);
       dispatch(authServices.authenticate(code));
     }
   }, [location, dispatch]);
+
+  if (!isAuthenticated && shouldNavigate) {
+    return <Navigate replace to='/login' />;
+  }
 
   if (isAuthenticated) {
     return <Navigate replace to='/' />;

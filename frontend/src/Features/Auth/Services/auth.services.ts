@@ -2,6 +2,7 @@ import { IAuthenticationResponse } from './../../../Interfaces';
 import { authActions } from './../../../Store/State/auth.state';
 import { API } from '../../../Lib';
 import { AppDispatch } from './../../../Store/index';
+import { uiActions } from '../../../Store/State';
 export const authServices = {
   authenticate(code: string) {
     return async (dispatch: AppDispatch) => {
@@ -11,8 +12,9 @@ export const authServices = {
           { code }
         );
         dispatch(authActions.login(data));
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        console.log(error.response.status);
+        dispatch(uiActions.setShouldNavigate(true));
       }
     };
   },
@@ -27,7 +29,7 @@ export const authServices = {
         setTimeout(() => {
           dispatch(authActions.login(data));
         }, 3000);
-      } catch (error) {
+      } catch (error: any) {
         console.log(error);
       }
     };

@@ -1,7 +1,6 @@
 import { OutlinedIcon, SolidIcon } from '../../../Components/UI';
 import { useStateDispatch } from '../../../Hooks';
 import { demoServices } from '../../../Services';
-
 interface Props {
   liked: boolean;
   postId: string;

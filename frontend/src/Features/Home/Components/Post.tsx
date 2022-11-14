@@ -3,40 +3,37 @@ import { PostControls } from './PostControls';
 import { Carousel } from './Carousel';
 import { PostBody } from './PostBody';
 
+import { IPost } from '../../../Interfaces';
 import { useStateSelector } from '../../../Hooks';
-import { adventurerUrl, avatarUrl, initialsUrl } from '../../../Utils';
+interface Props {
+  post: IPost;
+}
 
-const postText =
-  'Herlig bilde av lille gullet 👶. Her skal jeg teste litt lang text og emoji 📷. Håper dette er lang nok tekst for å teste.';
-
-export const Post = () => {
+export const Post: React.FC<Props> = ({ post }) => {
   const { user } = useStateSelector((state) => state.auth);
 
   return (
-    <article className='w-screen pb-3'>
+    <article className='w-screen pb-3 border-b dark:border-b-gray-800'>
       <PostHeader
         image={{
-          src: 'https://avatars.dicebear.com/api/avataaars/glensorbo.svg',
-          alt: 'Profile Image',
+          src: post.creator.webpProfileImage,
+          alt: post.creator.firstName,
         }}
-        firstName='Post '
-        lastName='Creator'
+        firstName={post.creator.firstName}
+        lastName={post.creator.lastName}
       />
-      <Carousel
-        sources={[`${adventurerUrl}/image1.svg`, `${avatarUrl}/image2.svg`]}
+      <Carousel sources={post.images} />
+      <PostControls
+        liked={post.likes.some((id) => id === user?.id)}
+        postId={post.id}
+        userId={user?.id ?? ''}
       />
-      <PostControls liked={false} />
       <PostBody
-        firstName={user?.firstName!}
-        lastName={user?.lastName!}
-        numberOfComments={10}
-        numberOfLikes={23}
-        postText={postText}
-        profileImage={{
-          src: user?.webpProfileImage
-            ? user?.webpProfileImage
-            : `${initialsUrl}/${user?.firstName} ${user?.lastName}.svg`,
-        }}
+        firstName={post.creator.firstName}
+        lastName={post.creator.lastName}
+        numberOfComments={post.comments.length}
+        numberOfLikes={post.likes.length}
+        title={post.title}
       />
     </article>
   );

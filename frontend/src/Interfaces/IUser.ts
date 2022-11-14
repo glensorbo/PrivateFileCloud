@@ -8,11 +8,11 @@ export interface IUser {
   invited?: Date;
   registered?: Date;
   updated?: Date;
-  status: string;
-  roles: [IRole];
+  status?: string;
+  roles?: [IRole];
   originalProfileImage: string;
   webpProfileImage: string;
-  isLoggingIn: boolean;
-  isRegistering: boolean;
+  isLoggingIn?: boolean;
+  isRegistering?: boolean;
   token?: string;
 }

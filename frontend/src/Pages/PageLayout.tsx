@@ -26,7 +26,7 @@ export const PageLayout = () => {
     } else {
       timer = setTimeout(() => {
         dispatch(authActions.setLoading(false));
-      }, 3000);
+      }, 500);
     }
     return () => {
       clearTimeout(timer);

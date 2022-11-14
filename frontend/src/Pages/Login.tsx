@@ -25,7 +25,7 @@ export const Login = () => {
       <Button onClick={() => window.location.replace(`${fullGoogleAuthUrl}`)}>
         Logg inn med Google
       </Button>
-      <Button onClick={() => dispatch(demoServices.setIsDemoUser())}>
+      <Button onClick={() => dispatch(demoServices.loginDemoUser())}>
         Se demo versjon
       </Button>
     </Section>

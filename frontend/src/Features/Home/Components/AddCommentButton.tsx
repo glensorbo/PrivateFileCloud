@@ -1,22 +1,14 @@
-interface Props {
-  image: {
-    src: string;
-    alt?: string;
-  };
-  firstName: string;
-  lastName: string;
-}
+import { useStateSelector } from '../../../Hooks';
+import { initialsUrl } from '../../../Utils';
 
-export const AddCommentButton: React.FC<Props> = ({
-  image,
-  firstName,
-  lastName,
-}) => {
+export const AddCommentButton: React.FC = () => {
+  const { user } = useStateSelector((state) => state.auth);
+
   return (
     <button className='flex items-center w-full py-2 text-left text-sm text-gray-400'>
       <img
-        src={image.src}
-        alt={image.alt ?? `${firstName} ${lastName}`}
+        src={user?.webpProfileImage}
+        alt={`${initialsUrl}/${user?.firstName} ${user?.lastName}.svg`}
         className='h-8 w-8 rounded-full mr-2'
       />
       Legg til en kommentar...

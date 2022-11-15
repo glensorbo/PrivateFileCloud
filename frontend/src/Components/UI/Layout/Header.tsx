@@ -5,7 +5,7 @@ import { initialsUrl } from '../../../Utils';
 export const Header = () => {
   const { user } = useStateSelector((state) => state.auth);
   return (
-    <header className='sticky top-0 left-0 dark:bg-dark-bg-primary w-screen h-16 flex items-center justify-between px-4 border-b dark:border-b-gray-800 z-50'>
+    <header className='sticky top-0 left-0 dark:bg-dark-bg-primary w-full h-16 flex items-center justify-between px-4 border-b dark:border-b-gray-800 z-50'>
       <h1 className='dark:text-dark-primary font-bold text-lg'>
         Private File Cloud
       </h1>

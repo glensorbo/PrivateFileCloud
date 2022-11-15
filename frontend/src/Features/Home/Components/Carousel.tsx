@@ -28,7 +28,7 @@ export const Carousel: React.FC<Props> = ({ post, liked }) => {
           className='relative min-w-full overflow-hidden snap-center'
           key={image}
         >
-          {showLikedHeart && (
+          {showLikedHeart && liked && (
             <div className='absolute top-0 left-0 h-full w-full flex items-center justify-center z-50'>
               <SolidIcon
                 icon='HeartIcon'

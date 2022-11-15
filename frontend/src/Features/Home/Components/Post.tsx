@@ -21,7 +21,7 @@ export const Post: React.FC<Props> = ({ post }) => {
 
   return (
     <>
-      <article className='w-screen pb-3 border-b dark:border-b-gray-800'>
+      <article className='w-screen max-w-lg m-auto pb-3 border-b dark:border-b-gray-800'>
         <PostHeader
           image={{
             src: post.creator.webpProfileImage,

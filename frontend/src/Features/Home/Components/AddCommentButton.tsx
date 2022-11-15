@@ -24,8 +24,12 @@ export const AddCommentButton: React.FC<Props> = ({
       onClick={toggleShowCommentInputHandler}
     >
       <img
-        src={user?.webpProfileImage}
-        alt={`${initialsUrl}/${user?.firstName} ${user?.lastName}.svg`}
+        src={
+          user?.webpProfileImage
+            ? user.webpProfileImage
+            : `${initialsUrl}/${user?.firstName} ${user?.lastName}.svg`
+        }
+        alt={`${user?.firstName} ${user?.lastName}`}
         className='h-8 w-8 rounded-full mr-2'
       />
       Legg til en kommentar...

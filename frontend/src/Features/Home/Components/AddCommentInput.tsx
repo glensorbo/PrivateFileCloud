@@ -61,7 +61,7 @@ export const AddCommentInput: React.FC<Props> = ({
   return (
     <>
       <div
-        className='fixed top-0 left-0 w-screen h-screen dark:bg-transparent'
+        className='fixed top-0 left-0 w-screen h-full dark:bg-transparent'
         onClick={toggleShowCommentInput}
       ></div>
       <div className='dark:bg-dark-bg-elevated w-screen min-h-[112px] fixed bottom-0 left-0 border-t dark:border-t-gray-800 pb-2 z-50'>
@@ -76,8 +76,12 @@ export const AddCommentInput: React.FC<Props> = ({
         </div>
         <div className='flex px-3 mt-2'>
           <img
-            src={user?.webpProfileImage}
-            alt={`${initialsUrl}/${user?.firstName} ${user?.lastName}.svg`}
+            src={
+              user?.webpProfileImage
+                ? user.webpProfileImage
+                : `${initialsUrl}/${user?.firstName} ${user?.lastName}.svg`
+            }
+            alt={`${user?.firstName} ${user?.lastName}`}
             className='h-10 w-10 rounded-full mr-3 mt-auto mb-3'
           />
           <textarea

@@ -51,7 +51,7 @@ export const PageLayout = () => {
               <button className='fixed bottom-3 right-3 h-20 w-20 rounded-full'>
                 <SolidIcon
                   icon='PlusCircleIcon'
-                  className='dark:text-dark-primary'
+                  className='text-light-primary dark:text-dark-primary'
                 />
               </button>
             ) : null}

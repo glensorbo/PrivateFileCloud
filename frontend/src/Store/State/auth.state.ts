@@ -7,7 +7,7 @@ const initialState = {
   isAdmin: false,
   isRegistering: false,
   isDemoUser: false,
-  user: {} as IUser | null,
+  user: {} as IUser,
 };
 
 const authState = createSlice({
@@ -39,8 +39,7 @@ const authState = createSlice({
       state.loading = false;
     },
     logOut(state) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      localStorage.clear();
       state = initialState;
     },
   },

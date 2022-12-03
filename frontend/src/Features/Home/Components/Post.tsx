@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { PostHeader } from './PostHeader';
 import { PostControls } from './PostControls';
-import { Carousel } from './Carousel';
+/* import { Carousel_old } from './Carousel_old'; */
 import { PostBody } from './PostBody';
 
 import { IPost } from '../../../Interfaces';
 import { useStateSelector } from '../../../Hooks';
 import { AddCommentInput } from './AddCommentInput';
+import { Carousel } from './Carousel';
 interface Props {
   post: IPost;
 }
@@ -30,6 +31,10 @@ export const Post: React.FC<Props> = ({ post }) => {
           firstName={post.creator.firstName}
           lastName={post.creator.lastName}
         />
+        {/*  <Carousel_old
+          post={post}
+          liked={post.likes.some((id) => id === user?.id)}
+        /> */}
         <Carousel
           post={post}
           liked={post.likes.some((id) => id === user?.id)}

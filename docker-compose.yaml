@@ -7,4 +7,4 @@ services:
 
   frontend:
     build: ./frontend
-    image: mainframe:9000/privatefilecloud_frontend:latest
+    image: mainframe:9000/privatefilecloud_frontend:v1.1.2

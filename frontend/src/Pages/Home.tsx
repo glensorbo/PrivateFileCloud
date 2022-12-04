@@ -1,19 +1,20 @@
 import { useEffect } from 'react';
 
 import { useStateDispatch, useStateSelector } from '../Hooks';
-import { demoServices } from '../Services';
+import { postServices } from '../Services';
 
 import { Post } from '../Features/Home';
 import { Spinner } from '../Components/UI';
 
 export const Home = () => {
+  const { isDemoUser } = useStateSelector((state) => state.auth);
   const { loading, posts } = useStateSelector((state) => state.posts);
 
   const dispatch = useStateDispatch();
 
   useEffect(() => {
-    dispatch(demoServices.loadDemoPosts());
-  }, [dispatch]);
+    dispatch(postServices.load(isDemoUser));
+  }, [dispatch, isDemoUser]);
 
   return (
     <>

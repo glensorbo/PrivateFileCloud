@@ -45,7 +45,7 @@ export const PageLayout = () => {
       {!loading && (
         <>
           {isAuthenticated || isDemoUser ? <Header /> : null}
-          <main className='min-h-screen min-w-full bg-white dark:bg-dark-bg-primary dark:text-dark-text-primary'>
+          <main className='min-w-full bg-white dark:bg-dark-bg-primary dark:text-dark-text-primary'>
             <Outlet />
             {(isAuthenticated || isDemoUser) && showAddPostButton ? (
               <button className='fixed bottom-3 right-3 h-20 w-20 rounded-full'>

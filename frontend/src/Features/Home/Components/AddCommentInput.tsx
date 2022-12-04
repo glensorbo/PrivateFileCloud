@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useStateDispatch, useStateSelector } from '../../../Hooks';
 import { IComment, IPost } from '../../../Interfaces';
-import { demoServices } from '../../../Services';
+import { postServices } from '../../../Services';
 import { emojiButtons, initialsUrl } from '../../../Utils';
 import { EmojiButton } from './EmojiButton';
 
@@ -17,7 +17,7 @@ export const AddCommentInput: React.FC<Props> = ({
   const [comment, setComment] = useState('');
   const [inputHeight, setInputHeight] = useState(40);
 
-  const { user } = useStateSelector((state) => state.auth);
+  const { user, isDemoUser } = useStateSelector((state) => state.auth);
 
   const dispatch = useStateDispatch();
 
@@ -36,10 +36,12 @@ export const AddCommentInput: React.FC<Props> = ({
         creator: user.id,
         likes: [],
         replies: [],
-        created: new Date().toLocaleDateString('no'),
+        created: new Date().toUTCString(),
       };
       toggleShowCommentInput();
-      dispatch(demoServices.addComment(newComment, post.id, user.id));
+      dispatch(
+        postServices.addComment(newComment, post.id, user.id, isDemoUser)
+      );
     }
   };
 

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
 
 import { useStateDispatch, useStateSelector } from '../Hooks';
-import { authServices } from '../Features/Auth/Services/auth.services';
+import { authServices } from '../Services';
 
 const googleState = process.env.REACT_APP_GOOGLE_STATE;
 

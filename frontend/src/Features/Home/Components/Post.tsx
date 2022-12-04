@@ -14,7 +14,7 @@ interface Props {
 
 export const Post: React.FC<Props> = ({ post }) => {
   const [showCommentInput, setShowCommentInput] = useState(false);
-  const { user } = useStateSelector((state) => state.auth);
+  const { user, isDemoUser } = useStateSelector((state) => state.auth);
 
   const toggleShowCommentInput = () => {
     setShowCommentInput((prev) => !prev);
@@ -35,14 +35,12 @@ export const Post: React.FC<Props> = ({ post }) => {
           post={post}
           liked={post.likes.some((id) => id === user?.id)}
         /> */}
-        <Carousel
-          post={post}
-          liked={post.likes.some((id) => id === user?.id)}
-        />
+        <Carousel post={post} liked={post.likes.some((id) => id === user.id)} />
         <PostControls
-          liked={post.likes.some((id) => id === user?.id)}
+          liked={post.likes.some((id) => id === user.id)}
           postId={post.id}
-          userId={user?.id ?? ''}
+          userId={user.id}
+          isDemoUser={isDemoUser}
         />
         <PostBody post={post} toggleShowCommentInput={toggleShowCommentInput} />
       </article>

@@ -1,17 +1,23 @@
 import { OutlinedIcon, SolidIcon } from '../../../Components/UI';
 import { useStateDispatch } from '../../../Hooks';
-import { demoServices } from '../../../Services';
+import { postServices } from '../../../Services';
 interface Props {
   liked: boolean;
   postId: string;
   userId: string;
+  isDemoUser: boolean;
 }
 
-export const PostControls: React.FC<Props> = ({ liked, postId, userId }) => {
+export const PostControls: React.FC<Props> = ({
+  liked,
+  postId,
+  userId,
+  isDemoUser,
+}) => {
   const dispatch = useStateDispatch();
 
   const onLikePostHandler = () => {
-    dispatch(demoServices.likePostToggle(postId, userId, liked));
+    dispatch(postServices.likePostToggle(postId, userId, liked, isDemoUser));
   };
 
   return (

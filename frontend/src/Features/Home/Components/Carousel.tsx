@@ -2,7 +2,7 @@ import { Carousel as ReactCarousel } from 'react-responsive-carousel';
 import { SolidIcon } from '../../../Components/UI';
 import { useStateDispatch, useStateSelector } from '../../../Hooks';
 import { IPost } from '../../../Interfaces';
-import { demoServices } from '../../../Services';
+import { postServices } from '../../../Services';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -12,13 +12,15 @@ interface Props {
 }
 
 export const Carousel: React.FC<Props> = ({ post, liked }) => {
-  const { user } = useStateSelector((state) => state.auth);
+  const { user, isDemoUser } = useStateSelector((state) => state.auth);
   const { showLikedHeart } = useStateSelector((state) => state.ui);
   const dispatch = useStateDispatch();
 
   const onDoubleClickHandler = () => {
     if (user) {
-      dispatch(demoServices.likePostToggle(post.id, user.id, liked));
+      dispatch(
+        postServices.likePostToggle(post.id, user.id, liked, isDemoUser)
+      );
     }
   };
 
@@ -32,8 +34,7 @@ export const Carousel: React.FC<Props> = ({ post, liked }) => {
     >
       {post.images.map((image) => (
         <div
-          id='lkjef'
-          key={image}
+          key={image.id}
           className='relative'
           onDoubleClick={onDoubleClickHandler}
         >
@@ -45,7 +46,7 @@ export const Carousel: React.FC<Props> = ({ post, liked }) => {
               />
             </div>
           )}
-          <img src={image} alt={image} />
+          <img src={image.url} alt={image.id} />
         </div>
       ))}
     </ReactCarousel>

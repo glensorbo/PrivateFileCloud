@@ -71,7 +71,7 @@ const createDemoPosts = async () => {
 
   for (let i = 0; users.length > i; i++) {
     const comment: IComment = {
-      created: Date.now().toLocaleString(),
+      created: new Date().toISOString(),
       creator: users[i].name,
       likes: [],
       text: posts[i].body,
@@ -79,10 +79,22 @@ const createDemoPosts = async () => {
     };
 
     const images = [
-      `${avatarUrl}/${users[i].name}.svg`,
-      `${avatarUrl}/${users[i].username}.svg`,
-      `${avatarUrl}/${users[i].address.street}.svg`,
-      `${avatarUrl}/${users[i].address.city}.svg`,
+      {
+        id: Math.random().toString(),
+        url: `${avatarUrl}/${users[i].name}.svg`,
+      },
+      {
+        id: Math.random().toString(),
+        url: `${avatarUrl}/${users[i].username}.svg`,
+      },
+      {
+        id: Math.random().toString(),
+        url: `${avatarUrl}/${users[i].address.street}.svg`,
+      },
+      {
+        id: Math.random().toString(),
+        url: `${avatarUrl}/${users[i].address.city}.svg`,
+      },
     ];
 
     const creator: IUser = {
@@ -101,7 +113,7 @@ const createDemoPosts = async () => {
       likes: [],
       images,
       comments: [comment],
-      created: Date.now().toLocaleString(),
+      created: new Date().toISOString(),
     };
     demoPosts.push(post);
   }

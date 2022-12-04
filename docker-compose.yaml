@@ -3,8 +3,8 @@ version: '3.8'
 services:
   backend:
     build: ./backend
-    image: mainframe:9000/privatefilecloud_backend:latest
+    image: mainframe:9000/privatefilecloud_backend:v1.1.1
 
   frontend:
     build: ./frontend
-    image: mainframe:9000/privatefilecloud_frontend:v1.1.2
+    image: mainframe:9000/privatefilecloud_frontend:v1.1.3

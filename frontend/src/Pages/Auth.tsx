@@ -1,17 +1,15 @@
 import { useEffect } from 'react';
-import { useLocation, Navigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-import { useStateDispatch, useStateSelector } from '../Hooks';
+import { useStateDispatch } from '../Hooks';
 import { authServices } from '../Services';
 
 const googleState = process.env.REACT_APP_GOOGLE_STATE;
 
 export const Auth: React.FC = () => {
   const location = useLocation();
-
-  const { isAuthenticated } = useStateSelector((state) => state.auth);
-  const { shouldNavigate } = useStateSelector((state) => state.ui);
   const dispatch = useStateDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -20,17 +18,13 @@ export const Auth: React.FC = () => {
     const code = params.get('code');
 
     if (googleState === stateFromQuery && code) {
-      dispatch(authServices.authenticate(code));
+      dispatch(
+        authServices.authenticate(code, () => {
+          navigate('/');
+        })
+      );
     }
-  }, [location, dispatch]);
-
-  if (!isAuthenticated && shouldNavigate) {
-    return <Navigate replace to='/login' />;
-  }
-
-  if (isAuthenticated) {
-    return <Navigate replace to='/' />;
-  }
+  }, [location, dispatch, navigate]);
 
   return <></>;
 };

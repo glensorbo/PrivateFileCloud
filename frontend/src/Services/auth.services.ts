@@ -1,11 +1,11 @@
 import { IAuthenticationResponse } from '../Interfaces';
 import { API } from '../Lib';
 import { AppDispatch } from '../Store';
-import { authActions, uiActions } from '../Store/State';
+import { authActions } from '../Store/State';
 import { sleep } from '../Utils';
 
 export const authServices = {
-  authenticate(code: string) {
+  authenticate(code: string, callback: () => void) {
     return async (dispatch: AppDispatch) => {
       try {
         const { data }: { data: IAuthenticationResponse } = await API.post(
@@ -13,9 +13,9 @@ export const authServices = {
           { code }
         );
         dispatch(authActions.login(data));
+        callback();
       } catch (error: any) {
         console.log(error.response.status);
-        dispatch(uiActions.setShouldNavigate(true));
       }
     };
   },
@@ -27,7 +27,7 @@ export const authServices = {
           { id }
         );
 
-        await sleep(3000);
+        await sleep(2000);
         dispatch(authActions.login(data));
       } catch (error: any) {
         console.log(error);

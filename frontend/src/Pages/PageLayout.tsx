@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Header, SolidIcon, Spinner } from '../Components/UI';
 import { useStateDispatch, useStateSelector } from '../Hooks';
 import { authServices } from '../Services';
-import { authActions } from '../Store/State';
+import { authActions } from '../Store';
 
 export const PageLayout = () => {
   const { loading, isAuthenticated, isDemoUser } = useStateSelector(

@@ -46,10 +46,13 @@ public class AuthenticationCommandHandler : IRequestHandler<AuthenticationComman
       return userInfoResponse.Errors;
     }
 
-    var emailFromGoogle = userInfoResponse.Value.Email.ToLower();
+    if (string.IsNullOrEmpty(userInfoResponse.Value.Email))
+    {
+      return Errors.Authentication.InvalidEmail;
+    }
 
     // TODO: Move this to UserRepository
-    var user = await dataContext.Users.SingleOrDefaultAsync(user => user.Email.ToLower() == emailFromGoogle, cancellationToken: cancellationToken);
+    var user = await dataContext.Users.FirstOrDefaultAsync(user => user.Email.ToLower() == userInfoResponse.Value.Email, cancellationToken: cancellationToken);
 
     if (user is null)
     {
@@ -75,7 +78,7 @@ public class AuthenticationCommandHandler : IRequestHandler<AuthenticationComman
 
       user.Roles.Add(adminRole);
       user.Status = "Active";
-      user.Updated = dateTimeService.CEST;
+      user.Updated = dateTimeService.UtcNow;
 
       adminRole.Creator = user;
 
@@ -92,7 +95,7 @@ public class AuthenticationCommandHandler : IRequestHandler<AuthenticationComman
 
     user.Status = "Active";
 
-    user.Registered = dateTimeService.CEST;
+    user.Registered = dateTimeService.UtcNow;
 
     var token = jwtGenerator.GenerateUserToken(user);
 
@@ -111,12 +114,7 @@ public class AuthenticationCommandHandler : IRequestHandler<AuthenticationComman
 
     var googleAuthResponse = await authResponse.Content.ReadFromJsonAsync<GoogleAuthResponse>(cancellationToken: cancellationToken);
 
-    if (googleAuthResponse is null)
-    {
-      return Errors.Authentication.Unauthorized;
-    }
-
-    return googleAuthResponse;
+    return googleAuthResponse ?? (ErrorOr<GoogleAuthResponse>)Errors.Authentication.Unauthorized;
   }
 
   private async Task<ErrorOr<GoogleUserInfoResponse>> GetGoogleUserInfo(string AccessToken, CancellationToken cancellationToken)
@@ -131,12 +129,6 @@ public class AuthenticationCommandHandler : IRequestHandler<AuthenticationComman
 
     var googleUserInfoResponse = await userInfoResponse.Content.ReadFromJsonAsync<GoogleUserInfoResponse>(cancellationToken: cancellationToken);
 
-    if (googleUserInfoResponse is null)
-    {
-      return Errors.Authentication.Unauthorized;
-    }
-
-    return googleUserInfoResponse;
+    return googleUserInfoResponse ?? (ErrorOr<GoogleUserInfoResponse>)Errors.Authentication.Unauthorized;
   }
-
 }

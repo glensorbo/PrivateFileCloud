@@ -3,7 +3,7 @@ version: '3.8'
 services:
   backend:
     build: ./backend
-    image: glensorbo.azurecr.io/privatefilecloud_backend:v1.1.5
+    image: glensorbo.azurecr.io/privatefilecloud_backend:v1.1.6
 
   frontend:
     build: ./frontend

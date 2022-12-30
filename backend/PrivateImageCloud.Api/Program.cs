@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 {
   builder.Services.AddDependencies(builder.Configuration);
+  builder.Services.AddHealthChecks();
 }
 
 var app = builder.Build();
@@ -26,5 +27,6 @@ var app = builder.Build();
   app.MapControllers();
   app.UseDefaultFiles();
   app.UseStaticFiles();
+  app.MapHealthChecks("/healthcheck");
   app.Run();
 }

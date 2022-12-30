@@ -27,6 +27,6 @@ var app = builder.Build();
   app.MapControllers();
   app.UseDefaultFiles();
   app.UseStaticFiles();
-  app.MapHealthChecks("/healthcheck");
+  app.MapHealthChecks("/api/healthcheck");
   app.Run();
 }
